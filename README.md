@@ -1,5 +1,7 @@
 # INCENTRONAUTEN FORMULIER
 
+I have spent about 4 hours on writing code, and one hour on the styling.
+
 ## Technologies used
 * React (Hooks)
 
