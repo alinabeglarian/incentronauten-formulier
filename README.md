@@ -3,7 +3,7 @@
 ## Technologies used
 * React (Hooks)
 
-* The [PDOK Locatieserver API](https://github.com/PDOK/locatieserver/wiki/API-Locatieserver) API was used to to find the city and streetname matching the postal code and housenumber: 
+* The [PDOK Locatieserver API](https://github.com/PDOK/locatieserver/wiki/API-Locatieserver) API was used to find the city and streetname matching the postal code and housenumber
 
 * [RequestBin](https://requestbin.com/) was used for testing the form by making a dummy URL.
 * The following URL was used to send the data to: https://enpi5jvod6cob.x.pipedream.net
