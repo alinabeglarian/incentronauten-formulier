@@ -1,6 +1,6 @@
 import React from 'react'
-import './styling.css'
 import Form from './Form'
+import './styling.css'
 
 function App() {
   return (
