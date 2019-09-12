@@ -4,15 +4,15 @@ export default function useFormValidation(initialState, validate) {
   const [ values, setValues ] = React.useState(initialState)
   const [ errors, setErrors ] = React.useState({})
   const [ isSubmitting, setSubmitting ] = React.useState(false)
-  const [ data, setData ] = React.useState({})
+  const [ isLoading, setLoading ] = React.useState(false)
 
   React.useEffect(() => {
     console.log('Checking for submission')
     if (isSubmitting) {
       const noErrors = Object.keys(errors).length === 0
       if (noErrors) {
-        console.log('Submitting!');
-        setValues(initialState)
+        console.log('Submitting!')
+        submitData(values)
         setSubmitting(false)
       } else {
         setSubmitting(false)
@@ -27,9 +27,9 @@ export default function useFormValidation(initialState, validate) {
       if (!errors.postcode && !errors.huisnummer) {
         console.log('there are no errors')
         fetchingPostalCode(values.postcode, values.huisnummer)
-        setSubmitting(false)
+        setLoading(false)
       } else {
-        setSubmitting(false)
+        setLoading(false)
       }
     }
   }, [errors])
@@ -56,7 +56,6 @@ export default function useFormValidation(initialState, validate) {
     setSubmitting(true)
   }
 
-
   async function fetchingPostalCode(postcode, huisnummer) {
     try {
       console.log('im fetching the data')
@@ -74,10 +73,38 @@ export default function useFormValidation(initialState, validate) {
     }
   }
 
+  async function submitData(values) {
+    const settings = {
+      method: 'POST',
+      mode: 'cors',
+      body: JSON.stringify(values),
+      headers: {
+      "Content-type": "application/json; charset=UTF-8"
+      }
+    }
+    try {
+      const response = await fetch("https://enpi5jvod6cob.x.pipedream.net/", settings)
+      const data = await response.json()
+      console.log(data)
+      setValues({voorletters: "",
+        tussenvoegsel: "",
+        achternaam: "",
+        postcode: "",
+        straatnaam: "",
+        stad: "",
+        huisnummer: "",
+        email: ""})
+    } catch(error) {
+      console.log(error)
+      return error
+    }
+  }
+
   return {
     values,
     errors,
     isSubmitting,
+    isLoading,
     handleChange,
     handleBlur,
     handleSubmit,

@@ -15,7 +15,7 @@ const initialState = {
 
 export default function Form(props) {
 
-  const { values, errors, isSubmitting, handleChange, handleBlur, handleSubmit } = useFormValidation(initialState, validationLogic)
+  const { values, errors, isSubmitting, isLoading, handleChange, handleBlur, handleSubmit } = useFormValidation(initialState, validationLogic)
 
   return (
     <div className="form-container">
