@@ -19,7 +19,8 @@ export default function Form(props) {
 
   return (
     <div className="form-container">
-      <h1>Incentronauten Formulier</h1>
+      <h1>Incentronauten</h1>
+      <h1>Formulier</h1>
       <form onSubmit={handleSubmit}>
         <input
           name="voorletters"
@@ -93,7 +94,7 @@ export default function Form(props) {
         />
         {errors.email && <p className="error-text">{errors.email}</p>}
         <div>
-          <button disabled={isSubmitting} type="submit">Submit</button>
+          <button className="btn" disabled={isSubmitting} type="submit">Submit</button>
         </div>
       </form>
     </div>

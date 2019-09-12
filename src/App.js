@@ -1,5 +1,5 @@
 import React from 'react'
-import './Styling.css'
+import './styling.css'
 import Form from './Form'
 
 function App() {

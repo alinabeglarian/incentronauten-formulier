@@ -7,13 +7,13 @@ export default function useFormValidation(initialState, validate) {
   const [ isLoading, setLoading ] = React.useState(false)
 
   React.useEffect(() => {
-    console.log('Checking for submission')
     if (isSubmitting) {
       const noErrors = Object.keys(errors).length === 0
       if (noErrors) {
         console.log('Submitting!')
         submitData(values)
         setSubmitting(false)
+        alert("Formulier is verstuurd!")
       } else {
         setSubmitting(false)
         setLoading(false)
@@ -22,11 +22,8 @@ export default function useFormValidation(initialState, validate) {
   }, [errors])
 
   React.useEffect(() => {
-    console.log('Checking for postalcode')
     if (values.postcode && values.huisnummer) {
-      console.log('there are values here')
       if (!errors.postcode && !errors.huisnummer) {
-        console.log('there are no errors')
         fetchingPostalCode(values.postcode, values.huisnummer)
         setLoading(true)
       } else {
@@ -36,7 +33,6 @@ export default function useFormValidation(initialState, validate) {
   }, [errors])
 
   function handleChange(event) {
-    console.log('I am filling in the form')
     setValues({
       ...values, 
       [event.target.name]: event.target.value
@@ -44,13 +40,11 @@ export default function useFormValidation(initialState, validate) {
   }
 
   function handleBlur() {
-    console.log('Handling the blur')
     const validationErrors = validate(values)
     setErrors(validationErrors)
   }
 
   function handleSubmit(event) {
-    console.log("Submitting?")
     event.preventDefault()
     const validationErrors = validate(values)
     setErrors(validationErrors)
@@ -59,7 +53,6 @@ export default function useFormValidation(initialState, validate) {
 
   async function fetchingPostalCode(postcode, huisnummer) {
     try {
-      console.log('im fetching the data')
       const response = await fetch(`http://geodata.nationaalgeoregister.nl/locatieserver/free?fq=postcode:${postcode}&fq=huisnummer~${huisnummer}*`)
       const data = await response.json()
       const firstResult = await data.response.docs[0]
@@ -87,7 +80,6 @@ export default function useFormValidation(initialState, validate) {
     try {
       const response = await fetch("https://enpi5jvod6cob.x.pipedream.net/", settings)
       const data = await response.json()
-      console.log(data)
       setValues({voorletters: "",
         tussenvoegsel: "",
         achternaam: "",
