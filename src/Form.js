@@ -60,14 +60,14 @@ export default function Form(props) {
         {errors.postcode && <p className="error-text">{errors.postcode}</p>}
         <input
           name="straatnaam"
-          onChange={handleChange}
+          readOnly
           value={values.straatnaam}
           placeholder="Straatnaam"
           autoComplete="off"
         />
         <input
           name="stad"
-          onChange={handleChange}
+          readOnly
           value={values.stad}
           placeholder="Stad"
           autoComplete="off"
