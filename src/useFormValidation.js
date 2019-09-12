@@ -10,7 +10,6 @@ export default function useFormValidation(initialState, validate) {
     if (isSubmitting) {
       const noErrors = Object.keys(errors).length === 0
       if (noErrors) {
-        console.log('Submitting!')
         submitData(values)
         setSubmitting(false)
         alert("Formulier is verstuurd!")

@@ -63,7 +63,7 @@ export default function Form(props) {
           name="straatnaam"
           readOnly
           value={values.straatnaam}
-          placeholder={isLoading ? "Loading..." : "Huisnummer"}
+          placeholder={isLoading ? "Loading..." : "Straatnaam"}
           autoComplete="off"
         />
         <input
@@ -94,7 +94,7 @@ export default function Form(props) {
         />
         {errors.email && <p className="error-text">{errors.email}</p>}
         <div>
-          <button className="btn" disabled={isSubmitting} type="submit">Submit</button>
+          <button className="btn" disabled={isSubmitting} type="submit">Verstuur</button>
         </div>
       </form>
     </div>
