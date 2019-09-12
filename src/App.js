@@ -1,5 +1,5 @@
-import React from 'react';
-import './App.css';
+import React from 'react'
+import './Styling.css'
 import Form from './Form'
 
 function App() {
