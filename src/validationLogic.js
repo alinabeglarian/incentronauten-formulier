@@ -9,15 +9,13 @@ export default function validationLogic(values) {
     if (!values.postcode) {
       errors.postcode = 'Postcode is verplicht'
     } else if (
-      /^[1-9][0-9]{3} ?(?!sa|sd|ss)[a-z]{2}$/i.test(values.postcode)
+      !/^[1-9][0-9]{3} ?(?!sa|sd|ss)[a-z]{2}$/i.test(values.postcode)
     ) {
       errors.postcode = 'Ongeldige postcode'
     }
     if (!values.huisnummer) {
       errors.huisnummer = 'Huisnummer is verplicht'
-    } else if (
-      values.huisnummer === isNaN
-    ) {
+    } else if (isNaN(values.huisnummer)) {
       errors.huisnummer = 'Huisnummers mogen alleen cijfers bevatten'
     }
     if (!values.email) {
