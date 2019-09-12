@@ -62,14 +62,14 @@ export default function Form(props) {
           name="straatnaam"
           readOnly
           value={values.straatnaam}
-          placeholder="Straatnaam"
+          placeholder={isLoading ? "Loading..." : "Huisnummer"}
           autoComplete="off"
         />
         <input
           name="stad"
           readOnly
           value={values.stad}
-          placeholder="Stad"
+          placeholder={isLoading ? "Loading..." : "Stad"}
           autoComplete="off"
         />
         <input

@@ -16,6 +16,7 @@ export default function useFormValidation(initialState, validate) {
         setSubmitting(false)
       } else {
         setSubmitting(false)
+        setLoading(false)
       }
     }
   }, [errors])
@@ -27,7 +28,7 @@ export default function useFormValidation(initialState, validate) {
       if (!errors.postcode && !errors.huisnummer) {
         console.log('there are no errors')
         fetchingPostalCode(values.postcode, values.huisnummer)
-        setLoading(false)
+        setLoading(true)
       } else {
         setLoading(false)
       }
@@ -67,6 +68,7 @@ export default function useFormValidation(initialState, validate) {
         stad: firstResult.woonplaatsnaam,
         straatnaam: firstResult.straatnaam
       })
+      setLoading(false)
     } catch(error) {
       console.log(error)
       return error
